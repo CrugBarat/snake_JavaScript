@@ -28,7 +28,6 @@ p {
 }
 
 .container {
-  border-style: solid;
   display: inline-block;
   width: 400px;
 }
@@ -38,7 +37,7 @@ p {
   height: 400px;
   display: flex;
   flex-wrap: wrap;
-  border-style: solid;
+  border: solid 5px;
 }
 
 .grid div {

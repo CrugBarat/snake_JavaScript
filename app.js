@@ -29,8 +29,7 @@ function startGame() {
   clearInterval(interval);
   score = 0;
 
-  //randomly generate an apple
-  //////////
+  randomApple()
 
   //start game
   direction = 1;
@@ -54,9 +53,9 @@ function moveOutcomes () {
     //use width to ascertain snake head position in grid
     (currentSnake[0] + width >= (width * width) && direction === width) || //if snake hits bottom
     (currentSnake[0] % width === width -1 && direction === 1) || //if snake hits right wall
-    (currentSnake[0] % width === width 0 && direction === -1) || //if snake hits left wall
+    (currentSnake[0] % width === 0 && direction === -1) || //if snake hits left wall
     (currentSnake[0] - width < 0 && direction === -width) || //if snake hits top
-    squares[currentSnake[0] + direction].classList.contains('snake');
+    squares[currentSnake[0] + direction].classList.contains('snake')
   ) {
     //clear interval if above occurs
     return clearInterval(interval)
@@ -75,7 +74,7 @@ function moveOutcomes () {
 
 
   //snake gets apple
-  if(sqaures[currentSnake[0]].classList.contains('apple')) {
+  if(squares[currentSnake[0]].classList.contains('apple')) {
 
     //remove apple
     squares[currentSnake[0]].classList.remove('apple');
@@ -84,7 +83,7 @@ function moveOutcomes () {
     squares[tail].classList.add('snake');
     currentSnake.push(tail);
 
-    //randomApple()
+    randomApple()
 
     //increase score and display
     score++;
@@ -93,11 +92,20 @@ function moveOutcomes () {
     //increase interval time to increase difficulty
     clearInterval(interval);
     intervalTime = intervalTime * speed;
-    interval = setInterval(newOutcomes, intervalTime);
+    interval = setInterval(moveOutcomes, intervalTime);
   }
 
+  squares[currentSnake[0]].classList.add('snake');
 }
 
+//GENERATE RANDOM APPLE
+function randomApple() {
+  do {
+    //generate random number based on square length
+    appleIndex = Math.floor(Math.random() * squares.length);
+  } while(squares[appleIndex].classList.contains('snake')) //apple won't appear in sanke position
+  squares[appleIndex].classList.add('apple')
+}
 
 
 
@@ -107,7 +115,7 @@ function moveOutcomes () {
   function control(e) {
 
     // remove snake class from all squares as it moves
-    squares[currentIndex].classList.remove('sanke')
+    squares[currentIndex].classList.remove('sanke');
 
 
     if(e.keyCode === 39) {
@@ -119,7 +127,7 @@ function moveOutcomes () {
     } else if (e.keyCode === 37) {
       //assign left arrow key
       direction = -1;
-    } else if (e.keyCode === 36) {
+    } else if (e.keyCode === 40) {
       // assign down arrow key
       direction = +width;
     }
@@ -129,6 +137,8 @@ function moveOutcomes () {
 // event listener for every time key is pressed
   document.addEventListener('keyup', control);
 
+//link start game function to start button
+  startBtn.addEventListener('click', startGame);
 
 
 

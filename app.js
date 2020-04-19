@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const startBtn = document.querySelector('.start');
 
   // SETUP
-  const width = 10;
+  const width = 40;
   let currentIndex = 0; // first div in grid
   let appleIndex = 0;
   let currentSnake = [2, 1, 0]; // 2 for head, 1 for body, 0 for tail
@@ -103,7 +103,7 @@ function randomApple() {
   do {
     //generate random number based on square length
     appleIndex = Math.floor(Math.random() * squares.length);
-  } while(squares[appleIndex].classList.contains('snake')) //apple won't appear in sanke position
+  } while(squares[appleIndex].classList.contains('snake')) //apple won't appear in snake position
   squares[appleIndex].classList.add('apple')
 }
 
@@ -115,7 +115,7 @@ function randomApple() {
   function control(e) {
 
     // remove snake class from all squares as it moves
-    squares[currentIndex].classList.remove('sanke');
+    squares[currentIndex].classList.remove('snake');
 
 
     if(e.keyCode === 39) {

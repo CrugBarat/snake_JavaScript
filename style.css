@@ -1,24 +1,69 @@
 body {
-  font-family: Menlo;
+  background-image: linear-gradient(#000, #444444);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  color: #7F40A0;
+  font-family: 'Press Start 2P', monospace;
+  text-align:center;
+  overflow: hidden;
+}
+
+p {
+  font-size: 60px;
+}
+
+.score {
+  padding-bottom: 20px;
+  color: #fff;
+  font-size: 20px;
+}
+
+.overall-container {
+  display: block;
+  text-align: center;
+  padding: 20px;
+}
+
+.container {
+  border-style: solid;
+  display: inline-block;
+  width: 400px;
 }
 
 .grid {
-  width: 600px;
-  height: 600px;
+  width: 400px;
+  height: 400px;
   display: flex;
   flex-wrap: wrap;
   border-style: solid;
 }
 
 .grid div {
-  width: 60px;
-  height: 60px;
+  width: 10px;
+  height: 10px;
 }
 
 .snake {
-  background-color: blue;
+  background-color: #0FFF00;
 }
 
 .apple {
-  background-color: pink;
+  background-color: #FF0000;
+}
+
+button {
+  background: transparent;
+  border: none;
+  font-family: 'Press Start 2P', monospace;
+  color: #fff;
+  font-size: 15px;
+  padding: 15px;
+  cursor: pointer;
+}
+
+button:focus {
+  display: none;
 }
